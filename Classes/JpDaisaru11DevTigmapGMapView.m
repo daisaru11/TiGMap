@@ -55,19 +55,11 @@
 	}
 
 	if (!_rendered || !_animate) {
-		// TODO: check delta
-		if (_location.latitude!=0 && _location.longitude!=0)
-		{
-			GMSCameraPosition *camera = [GMSCameraPosition cameraWithTarget:_location zoom:16];
-			[_map setCamera: camera];
-		}
+		GMSCameraPosition *camera = [GMSCameraPosition cameraWithTarget:_location zoom:16];
+		[_map setCamera: camera];
 		_rendered = YES;
 	} else {
-		// TODO: check delta
-		if (_location.latitude!=0 && _location.longitude!=0)
-		{
-			[_map animateToLocation:_location];
-		}
+		[_map animateToLocation:_location];
 		[_map animateToZoom: _zoom];
 	}
 	// no animation
@@ -116,6 +108,12 @@
 
 	NSLog(@"zoom: %f", _zoom);
 	[self render];
+}
+
+-(void)setAnimate_:(id)animate
+{
+	ENSURE_SINGLE_ARG(animate,NSObject);
+	_animate = [TiUtils boolValue];
 }
 
 @end
