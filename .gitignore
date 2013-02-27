@@ -20,7 +20,6 @@ profile
 *.moved-aside
 *~.nib
 
-module.xcconfig
 GoogleMaps.framework
 example/GoogleMaps.bundle
 
