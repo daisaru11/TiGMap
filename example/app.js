@@ -34,4 +34,8 @@ setTimeout(function() {
 		longitude: 135.502165
 	});
 	mapView.setZoom(12);
+	setTimeout(function() {
+		win.remove(mapView);
+		mapView = null;
+	}, 5000);
 }, 5000);

@@ -39,6 +39,7 @@
 		NSLog(@"initialize map");
 
 		_map = [[GMSMapView alloc] initWithFrame:self.bounds];
+		//NSLog(@"map retainCount:%d",[_map retainCount]);
 		_map.myLocationEnabled = YES;
 
 		[self addSubview:_map];
