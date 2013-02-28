@@ -179,6 +179,19 @@
 - (void)mapView:(GMSMapView *)mapView
     didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate
 {
+	if ([self.proxy _hasListeners:@"longpress"])
+	{
+		NSDictionary * props = [NSDictionary dictionaryWithObjectsAndKeys:
+			@"longpress",@"type",
+			[NSNumber numberWithDouble:coordinate.latitude],@"latitude",
+			[NSNumber numberWithDouble:coordinate.longitude],@"longitude",
+			nil];
+		[self.proxy fireEvent:@"longpress" withObject:props];
+	}
+}
+-(void)recognizedLongPress:(UILongPressGestureRecognizer*)recognizer
+{
+	// ignore the event by recognized in TiUIView
 }
 
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(id<GMSMarker>)marker
