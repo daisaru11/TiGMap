@@ -24,24 +24,21 @@ var mapView = tigmap.createGMapView({
 	//"width":200,
 	//"height":200
 });
-var ann = tigmap.createGMapAnnotation({
-	latitude: 34.693738,
-	longitude: 135.502165,
-	title: 'hoge'
-});
-mapView.addAnnotation(ann);
 win.add(mapView);
 
 win.open();
 
 setTimeout(function() {
+	var ann = tigmap.createGMapAnnotation({
+		latitude: 34.693738,
+		longitude: 135.502165,
+		title: 'hoge'
+	});
+	mapView.addAnnotation(ann);
 	mapView.setLocation({
 		latitude: 34.693738,
 		longitude: 135.502165
 	});
-	setTimeout(function() {
-		mapView.removeAnnotation(ann);
-	}, 3000);
 }, 3000);
 
 mapView.addEventListener('click', function(e) {

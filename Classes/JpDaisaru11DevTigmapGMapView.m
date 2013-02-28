@@ -41,7 +41,8 @@
 		NSLog(@"initialize map");
 
 		_map = [[GMSMapView alloc] initWithFrame:self.bounds];
-		//NSLog(@"map retainCount:%d",[_map retainCount]);
+		//GMSCameraPosition* camera = [GMSCameraPosition cameraWithLatitude:1.285 longitude:103.848 zoom:12];
+		//_map = [GMSMapView mapWithFrame:self.bounds camera:camera];
 		_map.myLocationEnabled = YES;
         _map.delegate = self;
 
@@ -80,6 +81,14 @@
 	[self render];
 }
 
+-(UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event
+{
+    UIView* result = [super hitTest:point withEvent:event];
+	if(result==self){
+		return nil;
+	}
+	return result;
+}
 #pragma mark Public APIs
 
 -(void)setLocation_:(id)location
@@ -196,11 +205,14 @@
 
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(id<GMSMarker>)marker
 {
+	NSLog(@"tap marker");
+	return YES; // when opening info window, app crash. why?
 }
 
 - (void)mapView:(GMSMapView *)mapView
     didTapInfoWindowOfMarker:(id<GMSMarker>)marker
 {
+	NSLog(@"tap infowindow");
 }
 
 

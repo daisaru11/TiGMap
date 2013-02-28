@@ -63,10 +63,12 @@
 
 -(void)setTitle:(id)title
 {
-	title = [TiUtils replaceString:[TiUtils stringValue:title]
-			characters:[NSCharacterSet newlineCharacterSet] withString:@" "];
-	//The label will strip out these newlines anyways (Technically, replace them with spaces)
-	id current = [self valueForUndefinedKey:@"title"];
+	id newValue = [TiUtils stringValue:[self valueForUndefinedKey:@"title"]];
+	id curValue = [TiUtils stringValue:title];
+//	title = [TiUtils replaceString:[TiUtils stringValue:title]
+//			characters:[NSCharacterSet newlineCharacterSet] withString:@" "];
+//	//The label will strip out these newlines anyways (Technically, replace them with spaces)
+//	id current = [self valueForUndefinedKey:@"title"];
 	[self replaceValue:title forKey:@"title" notification:NO];
 }
 @end
