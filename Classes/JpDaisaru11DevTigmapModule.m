@@ -33,14 +33,6 @@
 	// this method is called when the module is first loaded
 	// you *must* call the superclass
 	[super startup];
-
-	NSBundle *bundle = [NSBundle mainBundle];
-	NSDictionary *dic = [bundle infoDictionary];
-	NSArray *keys = [dic allKeys];
-	NSArray *vals = [dic allValues];
-	for(int i=0;i<[keys count];i++){
-		NSLog(@"[INFO] BundleKey：%@　Val：%@", [keys objectAtIndex:i], [vals objectAtIndex:i]);
-	}
 	
 	NSLog(@"[INFO] %@ loaded",self);
 }
