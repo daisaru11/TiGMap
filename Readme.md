@@ -19,7 +19,7 @@ This module is under development.
 2. Download the GoogleMaps SDK
 
 	[SDK](https://developers.google.com/maps/documentation/ios/start?hl=ja)をダウンロードして、好きな場所におきます。中には、`GoogleMaps.framework`が含まれており、これがビルド時に必要です。  
-	Download the [SDK](https://developers.google.com/maps/documentation/ios/start?hl=ja), and put it in an arbitrary directory. `GoogleMaps.framework`, which is included in the SDK, is needed on building your project. 
+	Download the [SDK](https://developers.google.com/maps/documentation/ios/start?hl=ja), and put it in an arbitrary directory. `GoogleMaps.framework`, which is included in the SDK files, is needed on building your project. 
 	
 	
 3. Setup the module
@@ -73,5 +73,6 @@ writing.
 ## About ##
 
 author: Daichi Sakai   
+license: MIT License
    
 Sorry for my poor English.
