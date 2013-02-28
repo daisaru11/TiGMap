@@ -47,3 +47,6 @@ setTimeout(function() {
 mapView.addEventListener('click', function(e) {
 	Ti.API.info('map clicked - latitude:'+e.latitude+', longitude:'+e.longitude);
 });
+mapView.addEventListener('cameraPositionChanged', function(e) {
+	Ti.API.info('camera position changed - latitude:'+e.target.latitude+', longitude:'+e.target.longitude);
+});

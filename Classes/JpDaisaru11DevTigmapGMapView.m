@@ -136,7 +136,7 @@
 	ENSURE_SINGLE_ARG(arg,NSObject);
 	ENSURE_UI_THREAD(removeAnnotation,arg);
 
-	JpDaisaru11DevTigmapGMapAnnotationProxy* annProxy = arg;
+	JpDaisaru11DevTigmapGMapAnnotationProxy *annProxy = arg;
 	[annProxy removeFromMap:[self map]];
 }
 
@@ -145,6 +145,21 @@
 - (void)mapView:(GMSMapView *)mapView
     didChangeCameraPosition:(GMSCameraPosition *)position
 {
+	if ([self.proxy _hasListeners:@"cameraPositionChanged"]) // listener name is too long?
+	{
+		NSDictionary *target = [NSDictionary dictionaryWithObjectsAndKeys:
+			[NSNumber numberWithDouble:position.target.latitude],@"latitude",
+			[NSNumber numberWithDouble:position.target.longitude],@"longitude",
+			nil];
+		NSDictionary *props = [NSDictionary dictionaryWithObjectsAndKeys:
+			@"cameraPositionChanged",@"type",
+			target,@"target",
+			[NSNumber numberWithDouble:position.zoom],@"zoom",
+			[NSNumber numberWithDouble:position.bearing],@"bearing",
+			[NSNumber numberWithDouble:position.viewingAngle],@"bearing",
+			nil];
+		[self.proxy fireEvent:@"cameraPositionChanged" withObject:props];
+	}
 }
 
 - (void)mapView:(GMSMapView *)mapView
