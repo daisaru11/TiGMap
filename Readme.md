@@ -25,7 +25,7 @@ This module is under development.
 3. Setup the module
 
 	このモジュール`jp.daisaru11.dev.tigmap-iphone-0.1.zip`をプロジェクトのルートディレクトリに置きます。`tiapp.xml`にこのモジュールの設定を追記します。  
-	Put the module `jp.daisaru11.dev.tigmap-iphone-0.1.zip` in the root directory of your project, and edit `tiapp.xml`.
+	Put `jp.daisaru11.dev.tigmap-iphone-0.1.zip` in the root directory of your project, and edit `tiapp.xml`:
 	
 			<modules>
 				…
@@ -33,7 +33,7 @@ This module is under development.
 			</modules>
 
 
-	`module.xcconfig`をコピーしてプロジェクトのルートディレクトリに置きます。`module.xcconfig`の中に書かれている`OTHER_LDFLAGS`を編集してframeworkの場所を指定します。たぶん、モジュールのビルド時のオプションを指定するファイルです。例えばこうします。  	
+	`module.xcconfig`をコピーしてプロジェクトのルートディレクトリに置きます。`module.xcconfig`の中に書かれている`OTHER_LDFLAGS`を編集してframeworkの場所を指定します。たぶん、モジュールのビルド時のオプションを指定するファイルです。  
 	Copy `module.xcconfig` to the root directory of your project. Edit `OTHER_LDFLAGS` option to specify the directory including the framework: 
 	
 		OTHER_LDFLAGS=$(inherited) -F"/Users/daichi/Frameworks/GoogleMaps-iOS-1.1.0" -framework GoogleMaps ...
@@ -41,7 +41,8 @@ This module is under development.
 	SDKに含まれている`GoogleMaps.bundle`をプロジェクト内の`Resources`ディレクトリの下にコピーします。  
 	Copy `GoogleMaps.bundle` into `Resources` directory of your project. `GoogleMaps.bundle` is located in `GoogleMaps.framework/Resources/`.
 	
-	あとは通常通り、ビルドするだけです。ビルドに失敗する場合は`build/`以下を削除して再ビルドすると成功する場合もあります。
+	あとは通常通り、ビルドするだけです。ビルドに失敗する場合は`build/`以下を削除して再ビルドすると成功する場合もあります。  
+	Build and run your project.
 	
 	
 4. How to use
