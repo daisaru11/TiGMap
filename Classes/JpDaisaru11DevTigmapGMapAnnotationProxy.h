@@ -7,7 +7,16 @@
 //
 
 #import "TiProxy.h"
+#import <GoogleMaps/GoogleMaps.h>
 
-@interface JpDaisaru11DevTigmapGMapAnnotation : TiProxy
+@interface JpDaisaru11DevTigmapGMapAnnotationProxy : TiProxy
+{
+	id<GMSMarker> _markerObj;
+}
+
+@property (nonatomic, readwrite, retain) id<GMSMarker> markerObj;
+
+-(void)addToMap:(GMSMapView *)mapView;
+-(void)removeFromMap:(GMSMapView *)mapView;
 
 @end

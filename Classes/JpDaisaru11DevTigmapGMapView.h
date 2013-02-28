@@ -20,4 +20,10 @@
 	BOOL _animate;
 }
 
+-(void)addAnnotation:(id)args;
+//-(void)addAnnotations:(id)args;
+-(void)removeAnnotation:(id)args;
+//-(void)removeAnnotations:(id)args;
+//-(void)removeAllAnnotations:(id)args;
+
 @end

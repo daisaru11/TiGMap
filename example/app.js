@@ -24,6 +24,12 @@ var mapView = tigmap.createGMapView({
 	//"width":200,
 	//"height":200
 });
+var ann = tigmap.createGMapAnnotation({
+	latitude: 34.693738,
+	longitude: 135.502165,
+	title: 'hoge'
+});
+mapView.addAnnotation(ann);
 win.add(mapView);
 
 win.open();
@@ -33,9 +39,8 @@ setTimeout(function() {
 		latitude: 34.693738,
 		longitude: 135.502165
 	});
-	mapView.setZoom(12);
 	setTimeout(function() {
-		win.remove(mapView);
-		mapView = null;
-	}, 5000);
-}, 5000);
+		mapView.removeAnnotation(ann);
+	}, 3000);
+}, 3000);
+

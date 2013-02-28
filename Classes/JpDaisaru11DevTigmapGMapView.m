@@ -7,6 +7,7 @@
 //
 
 #import "JpDaisaru11DevTigmapGMapView.h"
+#import "JpDaisaru11DevTigmapGMapAnnotationProxy.h"
 
 @implementation JpDaisaru11DevTigmapGMapView
 
@@ -114,7 +115,25 @@
 -(void)setAnimate_:(id)animate
 {
 	ENSURE_SINGLE_ARG(animate,NSObject);
-	_animate = [TiUtils boolValue];
+	_animate = [TiUtils boolValue:animate];
+}
+
+-(void)addAnnotation:(id)arg
+{
+	ENSURE_SINGLE_ARG(arg,NSObject);
+	ENSURE_UI_THREAD(addAnnotation,arg);
+
+	JpDaisaru11DevTigmapGMapAnnotationProxy* annProxy = arg;
+	[annProxy addToMap:[self map]];
+}
+
+-(void)removeAnnotation:(id)arg
+{
+	ENSURE_SINGLE_ARG(arg,NSObject);
+	ENSURE_UI_THREAD(removeAnnotation,arg);
+
+	JpDaisaru11DevTigmapGMapAnnotationProxy* annProxy = arg;
+	[annProxy removeFromMap:[self map]];
 }
 
 @end
