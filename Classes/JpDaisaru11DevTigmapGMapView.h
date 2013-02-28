@@ -11,7 +11,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 
 
-@interface JpDaisaru11DevTigmapGMapView : TiUIView
+@interface JpDaisaru11DevTigmapGMapView : TiUIView<GMSMapViewDelegate>
 {
 	GMSMapView * _map;
 	CLLocationCoordinate2D _location;

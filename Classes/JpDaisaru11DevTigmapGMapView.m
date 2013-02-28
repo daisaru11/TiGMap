@@ -11,6 +11,8 @@
 
 @implementation JpDaisaru11DevTigmapGMapView
 
+#pragma mark Internal
+
 -(id)init
 {
     if (self = [super init]) {
@@ -22,16 +24,15 @@
     return self;
 }
 
-
 - (void)dealloc
 {
     if (_map!=nil)
     {
+        _map.delegate = nil;
 		RELEASE_TO_NIL(_map);
 	}
 	[super dealloc];
 }
-
 
 - (GMSMapView *) map
 {
@@ -42,6 +43,7 @@
 		_map = [[GMSMapView alloc] initWithFrame:self.bounds];
 		//NSLog(@"map retainCount:%d",[_map retainCount]);
 		_map.myLocationEnabled = YES;
+        _map.delegate = self;
 
 		[self addSubview:_map];
 	}
@@ -77,6 +79,8 @@
 	//NSLog(@"framesizechanged latitude: %f, longitude: %f", _location.latitude, _location.longitude);
 	[self render];
 }
+
+#pragma mark Public APIs
 
 -(void)setLocation_:(id)location
 {
@@ -135,5 +139,41 @@
 	JpDaisaru11DevTigmapGMapAnnotationProxy* annProxy = arg;
 	[annProxy removeFromMap:[self map]];
 }
+
+#pragma mark Delegates
+
+- (void)mapView:(GMSMapView *)mapView
+    didChangeCameraPosition:(GMSCameraPosition *)position
+{
+}
+
+- (void)mapView:(GMSMapView *)mapView
+    didTapAtCoordinate:(CLLocationCoordinate2D)coordinate
+{
+}
+
+- (void)mapView:(GMSMapView *)mapView
+    didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate
+{
+}
+
+- (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(id<GMSMarker>)marker
+{
+}
+
+- (void)mapView:(GMSMapView *)mapView
+    didTapInfoWindowOfMarker:(id<GMSMarker>)marker
+{
+}
+
+
+- (UIView *)mapView:(GMSMapView *)mapView
+    markerInfoWindow:(id<GMSMarker>)marker
+{
+}
+
+
+
+
 
 @end
