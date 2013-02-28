@@ -44,3 +44,6 @@ setTimeout(function() {
 	}, 3000);
 }, 3000);
 
+mapView.addEventListener('click', function(e) {
+	Ti.API.info('map clicked - latitude:'+e.latitude+', longitude:'+e.longitude);
+});

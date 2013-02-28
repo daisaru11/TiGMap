@@ -150,6 +150,15 @@
 - (void)mapView:(GMSMapView *)mapView
     didTapAtCoordinate:(CLLocationCoordinate2D)coordinate
 {
+	if ([self.proxy _hasListeners:@"click"])
+	{
+		NSDictionary * props = [NSDictionary dictionaryWithObjectsAndKeys:
+			@"click",@"type",
+			[NSNumber numberWithDouble:coordinate.latitude],@"latitude",
+			[NSNumber numberWithDouble:coordinate.longitude],@"longitude",
+			nil];
+		[self.proxy fireEvent:@"click" withObject:props];
+	}
 }
 
 - (void)mapView:(GMSMapView *)mapView
