@@ -20,17 +20,21 @@
 		_zoom = 0;
 		_rendered = NO;
 		_animate = YES;
+		_annotationsAdded = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
 - (void)dealloc
 {
-    if (_map!=nil)
-    {
-        _map.delegate = nil;
+	if (_map!=nil)
+	{
+		_map.delegate = nil;
 		RELEASE_TO_NIL(_map);
 	}
+
+	RELEASE_TO_NIL(_annotationsAdded);
+
 	[super dealloc];
 }
 
@@ -89,6 +93,23 @@
 	}
 	return result;
 }
+
+-(JpDaisaru11DevTigmapGMapAnnotationProxy*) proxyForMarker:(id<GMSMarker>)marker
+{
+	for (id annProxy in _annotationsAdded)
+	{
+		if ([annProxy isKindOfClass:[JpDaisaru11DevTigmapGMapAnnotationProxy class]])
+		{
+			id<GMSMarker> m = [(JpDaisaru11DevTigmapGMapAnnotationProxy*)annProxy markerObj];
+			if ( m!=nil && m==marker )
+			{
+				return annProxy;
+			}
+		}
+	}
+	return nil;
+}
+
 #pragma mark Public APIs
 
 -(void)setLocation_:(id)location
@@ -137,7 +158,11 @@
 	ENSURE_UI_THREAD(addAnnotation,arg);
 
 	JpDaisaru11DevTigmapGMapAnnotationProxy* annProxy = arg;
-	[annProxy addToMap:[self map]];
+
+	if (annProxy!=nil && ![_annotationsAdded containsObject:annProxy]) {
+		[_annotationsAdded addObject:annProxy];
+		[annProxy addToMap:[self map]];
+	}
 }
 
 -(void)removeAnnotation:(id)arg
@@ -146,7 +171,11 @@
 	ENSURE_UI_THREAD(removeAnnotation,arg);
 
 	JpDaisaru11DevTigmapGMapAnnotationProxy *annProxy = arg;
-	[annProxy removeFromMap:[self map]];
+
+	if (annProxy!=nil && [_annotationsAdded containsObject:annProxy]) {
+		[_annotationsAdded removeObject:annProxy];
+		[annProxy removeFromMap:[self map]];
+	}
 }
 
 #pragma mark Delegates
@@ -205,7 +234,14 @@
 
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(id<GMSMarker>)marker
 {
-	NSLog(@"tap marker");
+	JpDaisaru11DevTigmapGMapAnnotationProxy *annProxy = [self proxyForMarker:marker];
+	if ([annProxy _hasListeners:@"click"])
+	{
+		NSDictionary * props = [NSDictionary dictionaryWithObjectsAndKeys:
+			@"click",@"type",
+			nil];
+		[annProxy fireEvent:@"click" withObject:props];
+	}
 	return YES; // when opening info window, app crash. why?
 }
 

@@ -39,6 +39,9 @@ setTimeout(function() {
 		latitude: 34.693738,
 		longitude: 135.502165
 	});
+	ann.addEventListener('click', function(e) {
+		Ti.API.info('marker click - ok');
+	});
 }, 3000);
 
 mapView.addEventListener('click', function(e) {
