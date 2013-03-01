@@ -66,9 +66,62 @@ This module is under development.
         win.add(mapView);
         
 
-## Available Methods ##
+## Available methods and events ##
 
-writing.
+* create and show a MapView
+	
+	MapViewを生成する際には`location`と`zoom`を指定します。通常のビューのように`top`や`width`といったプロパティも設定できます。  
+	
+		var mapView = tigmap.createGMapView({
+       		location: {
+        		latitude: 35.681382,
+        		longitude: 139.766084
+        	},
+        	zoom: 6,
+        	width: 320,
+        	height: 100
+		});
+		
+* change location and zoom
+		
+		mapView.setLocation({
+                latitude: 34.693738,
+                longitude: 135.502165
+        });
+        mapView.setZoom(12);
+
+		
+* add and remove annotations
+	
+	Annotation(Marker)をMapViewに追加することができます。
+	
+		var ann = tigmap.createGMapAnnotation({
+                latitude: 34.693738,
+                longitude: 135.502165,
+                title: 'hoge'
+        });
+        mapView.addAnnotation(ann);
+        setTimeout(function() {
+        	mapView.removeAnnotation(ann);
+        }, 5000)
+
+* listen events
+	
+		mapView.addEventListener('click', function(e) {
+        	Ti.API.info('map clicked - latitude:'+e.latitude+', longitude:'+e.longitude);
+		});
+		mapView.addEventListener('longpress', function(e) {
+        	Ti.API.info('map long pressed - latitude:'+e.latitude+', longitude:'+e.longitude);
+		});
+		mapView.addEventListener('cameraPositionChanged', function(e) {
+        	Ti.API.info('camera position changed - latitude:'+e.target.latitude+', longitude:'+e.target.longitude);
+		});
+		ann.addEventListener('click', function(e) {
+                Ti.API.info('marker click - latitude:'+ann.latitude+', longitude:'+ann.longitude);
+        });
+
+
+
 
 ## About ##
 
