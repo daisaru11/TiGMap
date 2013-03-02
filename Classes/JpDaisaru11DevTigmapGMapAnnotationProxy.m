@@ -27,7 +27,8 @@
 	options.position = CLLocationCoordinate2DMake(
 		[TiUtils doubleValue:[self valueForUndefinedKey:@"latitude"]],
 		[TiUtils doubleValue:[self valueForUndefinedKey:@"longitude"]] );
-	options.title = [self valueForUndefinedKey:@"title"];
+	options.title = [TiUtils stringValue:[self valueForUndefinedKey:@"title"]];
+	options.snippet = [TiUtils stringValue:[self valueForUndefinedKey:@"snippet"]];
 
 	self.markerObj = [mapView addMarkerWithOptions:options];
 
@@ -63,12 +64,20 @@
 
 -(void)setTitle:(id)title
 {
-	id newValue = [TiUtils stringValue:[self valueForUndefinedKey:@"title"]];
-	id curValue = [TiUtils stringValue:title];
+	NSString *newValue = [TiUtils stringValue:[self valueForUndefinedKey:@"title"]];
+	NSString *curValue = [TiUtils stringValue:title];
 //	title = [TiUtils replaceString:[TiUtils stringValue:title]
 //			characters:[NSCharacterSet newlineCharacterSet] withString:@" "];
 //	//The label will strip out these newlines anyways (Technically, replace them with spaces)
 //	id current = [self valueForUndefinedKey:@"title"];
 	[self replaceValue:title forKey:@"title" notification:NO];
 }
+
+-(void)setSnippet:(id)snippet
+{
+	NSString *newValue = [TiUtils stringValue:[self valueForUndefinedKey:@"snippet"]];
+	NSString *curValue = [TiUtils stringValue:snippet];
+	[self replaceValue:snippet forKey:@"snippet" notification:NO];
+}
+
 @end

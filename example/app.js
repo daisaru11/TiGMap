@@ -32,7 +32,8 @@ setTimeout(function() {
 	var ann = tigmap.createGMapAnnotation({
 		latitude: 34.693738,
 		longitude: 135.502165,
-		title: 'hoge'
+		title: 'hoge',
+		snippet: 'hogehoge, hogehoge'
 	});
 	mapView.addAnnotation(ann);
 	mapView.setLocation({
