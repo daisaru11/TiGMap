@@ -242,7 +242,7 @@
 			nil];
 		[annProxy fireEvent:@"click" withObject:props];
 	}
-	return YES; // when opening info window, app crash. why?
+	//return YES;
 }
 
 - (void)mapView:(GMSMapView *)mapView
@@ -252,10 +252,10 @@
 }
 
 
-- (UIView *)mapView:(GMSMapView *)mapView
-    markerInfoWindow:(id<GMSMarker>)marker
-{
-}
+//- (UIView *)mapView:(GMSMapView *)mapView
+//    markerInfoWindow:(id<GMSMarker>)marker
+//{
+//}
 
 
 
