@@ -22,6 +22,8 @@
 		_animate = YES;
 		_locChanged = NO;
 		_zoomChanged = NO;
+		_bearingChanged = NO;
+		_angleChanged = NO;
 		_annotationsAdded = [[NSMutableArray alloc] init];
     }
     return self;
@@ -74,18 +76,40 @@
 		if (_zoomChanged) {
 			zoom = _zoom;
 		}
-		GMSCameraPosition *camera = [GMSCameraPosition cameraWithTarget:target zoom:zoom];
+		CLLocationDirection bearing = _map.camera.bearing;
+		if (_bearingChanged) {
+			bearing = _bearing;
+		}
+		double angle = _map.camera.viewingAngle;
+		if (_angleChanged) {
+			angle = _angle;
+		}
+
+		GMSCameraPosition *camera = [GMSCameraPosition cameraWithTarget:target
+			zoom:zoom
+			bearing:bearing
+			viewingAngle:angle ];
+
 		[_map setCamera: camera];
-	} else {
+	}
+	else {
 		if (_locChanged) {
 			[_map animateToLocation:_location];
 		}
 		if (_zoomChanged) {
 			[_map animateToZoom: _zoom];
 		}
+		if (_bearingChanged) {
+			[_map animateToBearing: _bearing];
+		}
+		if (_angleChanged) {
+			[_map animateToViewingAngle: _angle];
+		}
 	}
 	_locChanged = NO;
 	_zoomChanged = NO;
+	_bearingChanged = NO;
+	_angleChanged = NO;
 	_rendered = YES;
 }
 
@@ -151,6 +175,28 @@
 	_zoom = [TiUtils floatValue:zoom];
 
 	_zoomChanged = YES;
+	[self render];
+}
+
+-(void)setBearing_:(id)bearing
+{
+	ENSURE_SINGLE_ARG(bearing,NSObject);
+	ENSURE_UI_THREAD(setBearing_,bearing);
+
+	_bearing = [TiUtils doubleValue:bearing];
+
+	_bearingChanged = YES;
+	[self render];
+}
+
+-(void)setViewingAngle_:(id)angle
+{
+	ENSURE_SINGLE_ARG(angle,NSObject);
+	ENSURE_UI_THREAD(setAngle_,angle);
+
+	_angle = [TiUtils doubleValue:angle];
+
+	_angleChanged = YES;
 	[self render];
 }
 

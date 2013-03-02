@@ -24,7 +24,7 @@ root.open();
 
 // create map examples
 var examples = { // each functions return a window including examples.
-	'Lab': exampleUnderLab,
+	'Lab': exampleInLab,
 	'Markers': exampleMarkers,
 	'Events': exampleEvents,
 	'MapTypes': exampleMapTypes,
@@ -54,7 +54,7 @@ win0.add(tableView);
 
 
 
-function exampleUnderLab() {
+function exampleInLab() {
 	var win = Ti.UI.createWindow({
 		backgroundColor:'white'
 	});
@@ -63,10 +63,19 @@ function exampleUnderLab() {
 			latitude: 35.681382,
 			longitude: 139.766084
 		},
-		zoom: 6,
-		mapType: tigmap.HYBRID_TYPE
+		zoom: 12,
+		mapType: tigmap.NORMAL_TYPE
 	});
 	win.add(mapView);
+
+	setTimeout(function() {
+		mapView.setZoom(8);
+		//mapView.setBearing(90);
+		//mapView.setViewingAngle(30);
+		setTimeout(function() {
+			mapView.setZoom(2);
+		}, 3000);
+	}, 4000);
 
 	return win;
 }

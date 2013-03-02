@@ -14,12 +14,18 @@
 @interface JpDaisaru11DevTigmapGMapView : TiUIView<GMSMapViewDelegate>
 {
 	GMSMapView * _map;
+
 	CLLocationCoordinate2D _location;
 	CGFloat _zoom;
-	BOOL _rendered;
-	BOOL _animate;
+	CLLocationDirection _bearing;
+	double _angle;
 	BOOL _locChanged;
 	BOOL _zoomChanged;
+	BOOL _bearingChanged;
+	BOOL _angleChanged;
+
+	BOOL _rendered;
+	BOOL _animate;
 
 	NSMutableArray* _annotationsAdded; // Annotations to add on initial display
 }
