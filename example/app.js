@@ -20,7 +20,8 @@ var mapView = tigmap.createGMapView({
 		latitude: 35.681382,
 		longitude: 139.766084
 	},
-	zoom: 6
+	zoom: 6,
+	mapType: tigmap.HYBRID_TYPE
 	//"width":200,
 	//"height":200
 });

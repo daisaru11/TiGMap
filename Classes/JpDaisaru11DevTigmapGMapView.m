@@ -152,6 +152,11 @@
 	_animate = [TiUtils boolValue:animate];
 }
 
+-(void)setMapType_:(id)value
+{
+	[[self map] setMapType:[TiUtils intValue:value]];
+}
+
 -(void)addAnnotation:(id)arg
 {
 	ENSURE_SINGLE_ARG(arg,NSObject);

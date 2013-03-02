@@ -12,6 +12,11 @@
 
 @implementation JpDaisaru11DevTigmapModule
 
+MAKE_SYSTEM_PROP(NORMAL_TYPE, kGMSTypeNormal); // Basic maps.
+MAKE_SYSTEM_PROP(SATELLITE_TYPE,kGMSTypeSatellite); // Satellite maps with no labels.
+MAKE_SYSTEM_PROP(TERRAIN_TYPE,kGMSTypeTerrain); // Terrain maps.
+MAKE_SYSTEM_PROP(HYBRID_TYPE,kGMSTypeHybrid); // Satellite maps with a transparent label overview.
+
 #pragma mark Internal
 
 // this is generated for your module, please do not change it
