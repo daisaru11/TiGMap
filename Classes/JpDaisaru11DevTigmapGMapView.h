@@ -18,6 +18,8 @@
 	CGFloat _zoom;
 	BOOL _rendered;
 	BOOL _animate;
+	BOOL _locChanged;
+	BOOL _zoomChanged;
 
 	NSMutableArray* _annotationsAdded; // Annotations to add on initial display
 }

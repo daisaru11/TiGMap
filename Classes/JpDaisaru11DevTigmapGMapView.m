@@ -20,6 +20,8 @@
 		_zoom = 0;
 		_rendered = NO;
 		_animate = YES;
+		_locChanged = NO;
+		_zoomChanged = NO;
 		_annotationsAdded = [[NSMutableArray alloc] init];
     }
     return self;
@@ -64,17 +66,27 @@
 	}
 
 	if (!_rendered || !_animate) {
-		GMSCameraPosition *camera = [GMSCameraPosition cameraWithTarget:_location zoom:16];
+		CLLocationCoordinate2D target = _map.camera.target;
+		if (_locChanged) {
+			target = _location;
+		}
+		CGFloat zoom = _map.camera.zoom;
+		if (_zoomChanged) {
+			zoom = _zoom;
+		}
+		GMSCameraPosition *camera = [GMSCameraPosition cameraWithTarget:target zoom:zoom];
 		[_map setCamera: camera];
-		_rendered = YES;
 	} else {
-		[_map animateToLocation:_location];
-		[_map animateToZoom: _zoom];
+		if (_locChanged) {
+			[_map animateToLocation:_location];
+		}
+		if (_zoomChanged) {
+			[_map animateToZoom: _zoom];
+		}
 	}
-	// no animation
-	//GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.8683
-	//longitude:151.2086
-	//zoom:6];
+	_locChanged = NO;
+	_zoomChanged = NO;
+	_rendered = YES;
 }
 
 - (void)frameSizeChanged:(CGRect)frame bounds:(CGRect)bounds
@@ -126,12 +138,8 @@
 	{
 		_location.longitude = [lon doubleValue];
 	}
-	//id an = [location objectForKey:@"animate"];
-	//if (an)
-	//{
-	//	animate = [an boolValue];
-	//}
-	NSLog(@"latitude: %f, longitude: %f", _location.latitude, _location.longitude);
+
+	_locChanged = YES;
 	[self render];
 }
 
@@ -142,7 +150,7 @@
 
 	_zoom = [TiUtils floatValue:zoom];
 
-	NSLog(@"zoom: %f", _zoom);
+	_zoomChanged = YES;
 	[self render];
 }
 
