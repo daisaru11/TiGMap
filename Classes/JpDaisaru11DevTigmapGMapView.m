@@ -46,8 +46,6 @@
 {
 	if (_map==nil)
 	{
-		NSLog(@"initialize map");
-
 		_map = [[GMSMapView alloc] initWithFrame:self.bounds];
 		//GMSCameraPosition* camera = [GMSCameraPosition cameraWithLatitude:1.285 longitude:103.848 zoom:12];
 		//_map = [GMSMapView mapWithFrame:self.bounds camera:camera];
@@ -62,6 +60,11 @@
 
 -(void)render
 {
+	if (_map==nil) // before mapview initialized
+	{
+		return;
+	}
+
 	if (![NSThread isMainThread]) {
 		TiThreadPerformOnMainThread(^{[self render];}, NO);
 		return;
@@ -117,7 +120,6 @@
 {
 	[TiUtils setView:[self map] positionRect:bounds];
 	[super frameSizeChanged:frame bounds:bounds];
-	//NSLog(@"framesizechanged latitude: %f, longitude: %f", _location.latitude, _location.longitude);
 	[self render];
 }
 
@@ -242,20 +244,20 @@
 - (void)mapView:(GMSMapView *)mapView
     didChangeCameraPosition:(GMSCameraPosition *)position
 {
-	if ([self.proxy _hasListeners:@"cameraPositionChanged"]) // listener name is too long?
+	if ([self.proxy _hasListeners:@"changeCameraPosition"]) // listener name is too long?
 	{
 		NSDictionary *target = [NSDictionary dictionaryWithObjectsAndKeys:
 			[NSNumber numberWithDouble:position.target.latitude],@"latitude",
 			[NSNumber numberWithDouble:position.target.longitude],@"longitude",
 			nil];
 		NSDictionary *props = [NSDictionary dictionaryWithObjectsAndKeys:
-			@"cameraPositionChanged",@"type",
+			@"changeCameraPosition",@"type",
 			target,@"target",
 			[NSNumber numberWithDouble:position.zoom],@"zoom",
 			[NSNumber numberWithDouble:position.bearing],@"bearing",
 			[NSNumber numberWithDouble:position.viewingAngle],@"bearing",
 			nil];
-		[self.proxy fireEvent:@"cameraPositionChanged" withObject:props];
+		[self.proxy fireEvent:@"changeCameraPosition" withObject:props];
 	}
 }
 

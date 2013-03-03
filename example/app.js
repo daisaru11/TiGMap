@@ -181,7 +181,7 @@ function exampleEvents() {
 		Ti.API.info(msg);
 		info.text = msg;
 	});
-	mapView.addEventListener('cameraPositionChanged', function(e) {
+	mapView.addEventListener('changeCameraPosition', function(e) {
 		var msg = 'camera position changed - latitude:'+e.target.latitude+', longitude:'+e.target.longitude;
 		Ti.API.info(msg);
 		info.text = msg;
