@@ -152,6 +152,15 @@ function exampleEvents() {
 		zoom: 6,
 		top: 25
 	});
+	var ann = tigmap.createGMapAnnotation({
+		latitude: 35.681382,
+		longitude: 139.766084,
+		title: 'Tokyo',
+		snippet: 'hogehoge, hogehoge',
+		isAdded: false
+	});
+	mapView.addAnnotation(ann);
+
 	win.add(mapView);
 
 	var info = Titanium.UI.createLabel({
@@ -174,6 +183,16 @@ function exampleEvents() {
 	});
 	mapView.addEventListener('cameraPositionChanged', function(e) {
 		var msg = 'camera position changed - latitude:'+e.target.latitude+', longitude:'+e.target.longitude;
+		Ti.API.info(msg);
+		info.text = msg;
+	});
+	ann.addEventListener('click', function(e) {
+		var msg = 'marker clicked';
+		Ti.API.info(msg);
+		info.text = msg;
+	});
+	ann.addEventListener('infoWindowClick', function(e) {
+		var msg = 'infoWindow clicked';
 		Ti.API.info(msg);
 		info.text = msg;
 	});

@@ -307,7 +307,14 @@
 - (void)mapView:(GMSMapView *)mapView
     didTapInfoWindowOfMarker:(id<GMSMarker>)marker
 {
-	NSLog(@"tap infowindow");
+	JpDaisaru11DevTigmapGMapAnnotationProxy *annProxy = [self proxyForMarker:marker];
+	if ([annProxy _hasListeners:@"infoWindowClick"])
+	{
+		NSDictionary * props = [NSDictionary dictionaryWithObjectsAndKeys:
+			@"infoWindowClick",@"type",
+			nil];
+		[annProxy fireEvent:@"infoWindowClick" withObject:props];
+	}
 }
 
 
