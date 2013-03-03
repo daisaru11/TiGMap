@@ -258,6 +258,36 @@ function exampleChangeCameraPosition() {
 	});
 	win.add(mapView);
 
+	var angleBtn = Ti.UI.createButton({
+		title: 'Change angle',
+		top: 10, left: 20
+	});
+	var angleToggle = true;
+	win.add(angleBtn);
+	angleBtn.addEventListener('click', function() {
+		if (angleToggle) {
+			mapView.setViewingAngle(30);
+		} else {
+			mapView.setViewingAngle(0);
+		}
+		angleToggle = !angleToggle;
+	});
+
+	var bearingBtn = Ti.UI.createButton({
+		title: 'Change bearing',
+		top: 10, right: 20
+	});
+	var bearingToggle = true;
+	win.add(bearingBtn);
+	bearingBtn.addEventListener('click', function() {
+		if (bearingToggle) {
+			mapView.setBearing(90);
+		} else {
+			mapView.setBearing(0);
+		}
+		bearingToggle = !bearingToggle;
+	});
+
 	mapView.addEventListener('click', function(e) {
 		mapView.setLocation({
 			latitude: e.latitude,

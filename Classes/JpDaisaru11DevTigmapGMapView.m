@@ -194,7 +194,7 @@
 -(void)setViewingAngle_:(id)angle
 {
 	ENSURE_SINGLE_ARG(angle,NSObject);
-	ENSURE_UI_THREAD(setAngle_,angle);
+	ENSURE_UI_THREAD(setViewingAngle_,angle);
 
 	_angle = [TiUtils doubleValue:angle];
 
