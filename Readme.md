@@ -3,9 +3,6 @@
 A Titanium module wraps GoogleMaps SDK for iOS.
 
 
-開発中です。Obj-CとTiModuleの開発にはあまり自信がないので悪い実装を含んでいるかもしれません。  
-This module is under development.
-
 
 ## Using in your projects ##
 
@@ -70,7 +67,8 @@ This module is under development.
 
 * create and show a MapView
 	
-	MapViewを生成する際には`location`と`zoom`を指定します。通常のビューのように`top`や`width`といったプロパティも設定できます。  
+	MapViewを生成する際には`location`、`zoom`、`bearing`、`viewingAngle`といったプロパティを指定できます。詳しくはSDKのドキュメントをみてください。通常のビューのように`top`や`width`といったプロパティも設定できます。  
+	MapView is created with the following properties: `location`, `zoom`, `bearing`, `viewingAngle`. See the SDK Documents for the detail.
 	
 		var mapView = tigmap.createGMapView({
        		location: {
@@ -78,32 +76,48 @@ This module is under development.
         		longitude: 139.766084
         	},
         	zoom: 6,
+        	bearing: 90,
+        	viewingAngle: 30,
         	width: 320,
         	height: 100
 		});
+
 		
-* change location and zoom
+* change camera position
 		
 		mapView.setLocation({
                 latitude: 34.693738,
                 longitude: 135.502165
         });
         mapView.setZoom(12);
+        mapView.setBearing(180);
+        mapView.setViewingAngle(45);
 
+* change maptypes
+
+		var mapView = tigmap.createGMapView({
+       		location: {
+        		latitude: 35.681382,
+        		longitude: 139.766084
+        	},
+        	zoom: 6,
+        	mapType: tigmap.NORMAL_TYPE
+		});
+		mapView.setMapType(tigmap.SATELLITE_TYPE);
+		mapView.setMapType(tigmap.TERRAIN_TYPE);
+		mapView.setMapType(tigmap.HYBRID_TYPE);
+       
 		
-* add and remove annotations
-	
-	Annotation(Marker)をMapViewに追加することができます。
-	
+* add and remove annotations(markers)
+		
 		var ann = tigmap.createGMapAnnotation({
                 latitude: 34.693738,
                 longitude: 135.502165,
                 title: 'hoge'
         });
         mapView.addAnnotation(ann);
-        setTimeout(function() {
-        	mapView.removeAnnotation(ann);
-        }, 5000)
+        mapView.removeAnnotation(ann);
+        
 
 * listen events
 	
@@ -113,11 +127,14 @@ This module is under development.
 		mapView.addEventListener('longpress', function(e) {
         	Ti.API.info('map long pressed - latitude:'+e.latitude+', longitude:'+e.longitude);
 		});
-		mapView.addEventListener('cameraPositionChanged', function(e) {
+		mapView.addEventListener('changeCameraPosition', function(e) {
         	Ti.API.info('camera position changed - latitude:'+e.target.latitude+', longitude:'+e.target.longitude);
 		});
 		ann.addEventListener('click', function(e) {
-                Ti.API.info('marker click - latitude:'+ann.latitude+', longitude:'+ann.longitude);
+            Ti.API.info('marker click - latitude:'+ann.latitude+', longitude:'+ann.longitude);
+        });
+        ann.addEventListener('infoWindowClick', function(e) {
+        	Ti.API.info('infowindow click');	
         });
 
 
