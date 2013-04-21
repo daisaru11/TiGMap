@@ -113,7 +113,6 @@
 	_zoomChanged = NO;
 	_bearingChanged = NO;
 	_angleChanged = NO;
-	_rendered = YES;
 }
 
 - (void)frameSizeChanged:(CGRect)frame bounds:(CGRect)bounds
@@ -121,6 +120,7 @@
 	[TiUtils setView:[self map] positionRect:bounds];
 	[super frameSizeChanged:frame bounds:bounds];
 	[self render];
+	_rendered = YES;
 }
 
 -(UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event
