@@ -25,5 +25,5 @@
 //
 // IMPORTANT NOTE: always use $(inherited) in your overrides
 // 
-OTHER_LDFLAGS=$(inherited) -F"YOUR_GOOGLE_MAPS_SDK_LOCATION" -framework GoogleMaps -framework AVFoundation -framework CoreText -framework CoreData -framework CoreGraphics -framework CoreLocation -framework ImageIO -framework GLKit -framework SystemConfiguration -framework QuartzCore -framework OpenGLES /usr/lib/libz.dylib /usr/lib/libstdc++.dylib /usr/lib/libicucore.dylib /usr/lib/libobjc.A.dylib
+OTHER_LDFLAGS=$(inherited) -F"YOUR_GOOGLE_MAPS_SDK_LOCATION" -framework GoogleMaps -framework AVFoundation -framework CoreText -framework CoreData -framework CoreGraphics -framework CoreLocation -framework ImageIO -framework GLKit -framework SystemConfiguration -framework QuartzCore -framework OpenGLES /usr/lib/libz.dylib /usr/lib/libc++.dylib /usr/lib/libicucore.dylib /usr/lib/libobjc.A.dylib
 

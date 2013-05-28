@@ -26,11 +26,11 @@
 		24DD6CFA1134B3F500162E58 /* JpDaisaru11DevTigmapModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DD6CF81134B3F500162E58 /* JpDaisaru11DevTigmapModule.m */; };
 		24DE9E1111C5FE74003F90F6 /* JpDaisaru11DevTigmapModuleAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DE9E0F11C5FE74003F90F6 /* JpDaisaru11DevTigmapModuleAssets.h */; };
 		24DE9E1211C5FE74003F90F6 /* JpDaisaru11DevTigmapModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DE9E1011C5FE74003F90F6 /* JpDaisaru11DevTigmapModuleAssets.m */; };
+		425A64EF1755000D00B2DFA0 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 425A64EE1755000D00B2DFA0 /* GoogleMaps.framework */; };
 		427D1DAF16DCECC800A98524 /* JpDaisaru11DevTigmapGMapView.h in Headers */ = {isa = PBXBuildFile; fileRef = 427D1DAB16DCECC800A98524 /* JpDaisaru11DevTigmapGMapView.h */; };
 		427D1DB016DCECC800A98524 /* JpDaisaru11DevTigmapGMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 427D1DAC16DCECC800A98524 /* JpDaisaru11DevTigmapGMapView.m */; };
 		427D1DB116DCECC800A98524 /* JpDaisaru11DevTigmapGMapViewProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 427D1DAD16DCECC800A98524 /* JpDaisaru11DevTigmapGMapViewProxy.h */; };
 		427D1DB216DCECC800A98524 /* JpDaisaru11DevTigmapGMapViewProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 427D1DAE16DCECC800A98524 /* JpDaisaru11DevTigmapGMapViewProxy.m */; };
-		427D1DB916DD475900A98524 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 427D1DB816DD475900A98524 /* GoogleMaps.framework */; };
 		427D1DBC16DE606D00A98524 /* JpDaisaru11DevTigmapGMapAnnotationProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 427D1DBA16DE606D00A98524 /* JpDaisaru11DevTigmapGMapAnnotationProxy.h */; };
 		427D1DBD16DE606D00A98524 /* JpDaisaru11DevTigmapGMapAnnotationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 427D1DBB16DE606D00A98524 /* JpDaisaru11DevTigmapGMapAnnotationProxy.m */; };
 		AA747D9F0F9514B9006C5449 /* JpDaisaru11DevTigmap_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* JpDaisaru11DevTigmap_Prefix.pch */; };
@@ -53,11 +53,11 @@
 		24DD6D1B1134B66800162E58 /* titanium.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = titanium.xcconfig; sourceTree = "<group>"; };
 		24DE9E0F11C5FE74003F90F6 /* JpDaisaru11DevTigmapModuleAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JpDaisaru11DevTigmapModuleAssets.h; path = Classes/JpDaisaru11DevTigmapModuleAssets.h; sourceTree = "<group>"; };
 		24DE9E1011C5FE74003F90F6 /* JpDaisaru11DevTigmapModuleAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JpDaisaru11DevTigmapModuleAssets.m; path = Classes/JpDaisaru11DevTigmapModuleAssets.m; sourceTree = "<group>"; };
+		425A64EE1755000D00B2DFA0 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		427D1DAB16DCECC800A98524 /* JpDaisaru11DevTigmapGMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JpDaisaru11DevTigmapGMapView.h; path = Classes/JpDaisaru11DevTigmapGMapView.h; sourceTree = "<group>"; };
 		427D1DAC16DCECC800A98524 /* JpDaisaru11DevTigmapGMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JpDaisaru11DevTigmapGMapView.m; path = Classes/JpDaisaru11DevTigmapGMapView.m; sourceTree = "<group>"; };
 		427D1DAD16DCECC800A98524 /* JpDaisaru11DevTigmapGMapViewProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JpDaisaru11DevTigmapGMapViewProxy.h; path = Classes/JpDaisaru11DevTigmapGMapViewProxy.h; sourceTree = "<group>"; };
 		427D1DAE16DCECC800A98524 /* JpDaisaru11DevTigmapGMapViewProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JpDaisaru11DevTigmapGMapViewProxy.m; path = Classes/JpDaisaru11DevTigmapGMapViewProxy.m; sourceTree = "<group>"; };
-		427D1DB816DD475900A98524 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		427D1DBA16DE606D00A98524 /* JpDaisaru11DevTigmapGMapAnnotationProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JpDaisaru11DevTigmapGMapAnnotationProxy.h; path = Classes/JpDaisaru11DevTigmapGMapAnnotationProxy.h; sourceTree = "<group>"; };
 		427D1DBB16DE606D00A98524 /* JpDaisaru11DevTigmapGMapAnnotationProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JpDaisaru11DevTigmapGMapAnnotationProxy.m; path = Classes/JpDaisaru11DevTigmapGMapAnnotationProxy.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* JpDaisaru11DevTigmap_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JpDaisaru11DevTigmap_Prefix.pch; sourceTree = SOURCE_ROOT; };
@@ -71,7 +71,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
-				427D1DB916DD475900A98524 /* GoogleMaps.framework in Frameworks */,
+				425A64EF1755000D00B2DFA0 /* GoogleMaps.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,7 +89,7 @@
 		0867D691FE84028FC02AAC07 /* tigmap */ = {
 			isa = PBXGroup;
 			children = (
-				427D1DB816DD475900A98524 /* GoogleMaps.framework */,
+				425A64EE1755000D00B2DFA0 /* GoogleMaps.framework */,
 				08FB77AEFE84172EC02AAC07 /* Classes */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,

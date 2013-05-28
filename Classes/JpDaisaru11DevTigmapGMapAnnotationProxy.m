@@ -16,6 +16,7 @@
 {
     if (_markerObj!=nil)
     {
+		_markerObj.map = nil;
 		RELEASE_TO_NIL(_markerObj);
 	}
 	[super dealloc];
@@ -23,22 +24,18 @@
 
 -(void)addToMap:(GMSMapView *)mapView
 {
-	GMSMarkerOptions *options = [[GMSMarkerOptions alloc] init];
-	options.position = CLLocationCoordinate2DMake(
+	self.markerObj = [GMSMarker markerWithPosition:CLLocationCoordinate2DMake(
 		[TiUtils doubleValue:[self valueForUndefinedKey:@"latitude"]],
-		[TiUtils doubleValue:[self valueForUndefinedKey:@"longitude"]] );
-	options.title = [TiUtils stringValue:[self valueForUndefinedKey:@"title"]];
-	options.snippet = [TiUtils stringValue:[self valueForUndefinedKey:@"snippet"]];
-
-	self.markerObj = [mapView addMarkerWithOptions:options];
-
-	[options release];
+		[TiUtils doubleValue:[self valueForUndefinedKey:@"longitude"]] ) ];
+	self.markerObj.title = [TiUtils stringValue:[self valueForUndefinedKey:@"title"]];
+	self.markerObj.snippet = [TiUtils stringValue:[self valueForUndefinedKey:@"snippet"]];
+	self.markerObj.map = mapView;
 }
 -(void)removeFromMap:(GMSMapView *)mapView
 {
 	if (_markerObj!=nil)
 	{
-		[_markerObj remove];
+		_markerObj.map = nil;
 		RELEASE_TO_NIL(_markerObj);
 	}
 }

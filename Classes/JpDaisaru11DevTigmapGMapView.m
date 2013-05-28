@@ -132,13 +132,13 @@
 	return result;
 }
 
--(JpDaisaru11DevTigmapGMapAnnotationProxy*) proxyForMarker:(id<GMSMarker>)marker
+-(JpDaisaru11DevTigmapGMapAnnotationProxy*) proxyForMarker:(GMSMarker *)marker
 {
 	for (id annProxy in _annotationsAdded)
 	{
 		if ([annProxy isKindOfClass:[JpDaisaru11DevTigmapGMapAnnotationProxy class]])
 		{
-			id<GMSMarker> m = [(JpDaisaru11DevTigmapGMapAnnotationProxy*)annProxy markerObj];
+			GMSMarker* m = [(JpDaisaru11DevTigmapGMapAnnotationProxy*)annProxy markerObj];
 			if ( m!=nil && m==marker )
 			{
 				return annProxy;
@@ -293,7 +293,7 @@
 	// ignore the event by recognized in TiUIView
 }
 
-- (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(id<GMSMarker>)marker
+- (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker
 {
 	JpDaisaru11DevTigmapGMapAnnotationProxy *annProxy = [self proxyForMarker:marker];
 	if ([annProxy _hasListeners:@"click"])
@@ -307,7 +307,7 @@
 }
 
 - (void)mapView:(GMSMapView *)mapView
-    didTapInfoWindowOfMarker:(id<GMSMarker>)marker
+    didTapInfoWindowOfMarker:(GMSMarker *)marker
 {
 	JpDaisaru11DevTigmapGMapAnnotationProxy *annProxy = [self proxyForMarker:marker];
 	if ([annProxy _hasListeners:@"infoWindowClick"])

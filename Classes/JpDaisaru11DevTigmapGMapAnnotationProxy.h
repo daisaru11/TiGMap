@@ -11,10 +11,10 @@
 
 @interface JpDaisaru11DevTigmapGMapAnnotationProxy : TiProxy
 {
-	id<GMSMarker> _markerObj;
+	GMSMarker * _markerObj;
 }
 
-@property (nonatomic, readwrite, retain) id<GMSMarker> markerObj;
+@property (nonatomic, readwrite, retain) GMSMarker *markerObj;
 
 -(void)addToMap:(GMSMapView *)mapView;
 -(void)removeFromMap:(GMSMapView *)mapView;
