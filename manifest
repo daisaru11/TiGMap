@@ -15,4 +15,4 @@ name: tigmap
 moduleid: jp.daisaru11.dev.tigmap
 guid: ee8be600-c244-4b50-bae0-3ee2f3818630
 platform: iphone
-minsdk: 2.1.3.GA
+minsdk: 3.1.0.GA
